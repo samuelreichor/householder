@@ -32,9 +32,11 @@ export default defineEventHandler(async (event) => {
 
   const monthsMap = new Map<string, { ym: string, year: number, month: number, total: number, entries: Entry[] }>()
   for (const r of rows) {
-    const [y, m] = r.ym.split('-').map(Number)
+    const parts = r.ym.split('-').map(Number)
+    const year = parts[0] ?? 0
+    const month = parts[1] ?? 0
     if (!monthsMap.has(r.ym)) {
-      monthsMap.set(r.ym, { ym: r.ym, year: y, month: m, total: 0, entries: [] })
+      monthsMap.set(r.ym, { ym: r.ym, year, month, total: 0, entries: [] })
     }
     const bucket = monthsMap.get(r.ym)!
     bucket.entries.push({
