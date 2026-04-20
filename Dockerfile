@@ -1,6 +1,8 @@
 FROM node:22-slim AS builder
 WORKDIR /app
 
+RUN npm install -g npm@11
+
 COPY package*.json ./
 RUN npm ci --no-audit --no-fund
 
