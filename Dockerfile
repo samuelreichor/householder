@@ -14,10 +14,12 @@ ENV HOST=0.0.0.0
 ENV PORT=3000
 ENV DB_PATH=/data/householder.sqlite
 
-RUN mkdir -p /data && chown -R node:node /data
+RUN mkdir -p /data
 
-COPY --from=builder --chown=node:node /app/.output ./.output
+COPY --from=builder /app/.output ./.output
 
-USER node
+# Run as root so we can write to Coolify's persistent volume at /data
+# (named volumes mount as root:root and mask any chown done at build time).
+# Acceptable for a self-hosted single-tenant app; revisit if threat model changes.
 EXPOSE 3000
 CMD ["node", ".output/server/index.mjs"]
