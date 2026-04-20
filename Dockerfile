@@ -15,6 +15,7 @@ ENV PORT=3000
 ENV DB_PATH=/data/householder.sqlite
 
 RUN mkdir -p /data
+VOLUME ["/data"]
 
 COPY --from=builder /app/.output ./.output
 

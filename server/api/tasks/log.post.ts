@@ -4,6 +4,8 @@ const MAX_CUSTOM_LEN = 80
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event)
+  ensureUser(user)
+
   const body = await readBody<{ taskKey?: string, customLabel?: string }>(event)
   const taskKey = body?.taskKey
 

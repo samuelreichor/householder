@@ -43,3 +43,26 @@ export function useDb() {
 
   return db
 }
+
+interface SessionUser {
+  id: string
+  email: string
+  name: string
+  picture?: string
+}
+
+/**
+ * Ensures the session's user exists in the DB. Needed because the session is
+ * a sealed client-side cookie and survives DB loss — after a deploy that wipes
+ * /data, the FK from task_logs.user_id would otherwise fail.
+ */
+export function ensureUser(user: SessionUser) {
+  useDb().prepare(`
+    INSERT INTO users (id, email, name, picture, created_at)
+    VALUES (?, ?, ?, ?, ?)
+    ON CONFLICT(id) DO UPDATE SET
+      email = excluded.email,
+      name = excluded.name,
+      picture = excluded.picture
+  `).run(user.id, user.email, user.name, user.picture ?? null, Date.now())
+}
