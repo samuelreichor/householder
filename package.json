@@ -28,8 +28,5 @@
     "eslint": "^10.2.0",
     "typescript": "^6.0.2",
     "vue-tsc": "^3.2.6"
-  },
-  "optionalDependencies": {
-    "@oxc-parser/binding-linux-arm64-gnu": "0.117.0"
   }
 }
