@@ -14,6 +14,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     allowedEmails: '',
+    session: {
+      maxAge: 60 * 60 * 24 * 365 // 1 year
+    },
     oauth: {
       google: {
         clientId: '',
