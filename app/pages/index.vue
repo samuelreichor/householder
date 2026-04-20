@@ -232,8 +232,7 @@ onMounted(() => {
           :class="task.classes.icon"
         />
         <span
-          class="text-sm sm:text-base leading-tight whitespace-normal font-medium"
-          :class="countToday(task.key) > 0 ? 'pr-10' : ''"
+          class="text-sm sm:text-base leading-tight whitespace-normal font-medium break-text"
         >
           {{ task.label }}
         </span>
@@ -247,8 +246,8 @@ onMounted(() => {
           v-if="countToday(task.key) > 0"
           :label="`${countToday(task.key)}×`"
           color="neutral"
-          variant="solid"
-          class="absolute top-2.5 right-2.5"
+          variant="soft"
+          class="absolute bottom-2.5 right-2.5"
         />
       </button>
     </div>

@@ -13,3 +13,12 @@
   --radius-2xl: 1.25rem;
   --radius-3xl: 1.5rem;
 }
+
+.break-text {
+  word-break: break-word;
+  hyphens: auto;
+  -webkit-hyphenate-limit-before: 5;
+  -webkit-hyphenate-limit-after: 5;
+  -ms-hyphenate-limit-chars: 10 5 5;
+  hyphenate-limit-chars: 10 5 5;
+}
