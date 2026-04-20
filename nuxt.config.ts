@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     allowedEmails: '',
     session: {
+      password: '', // set via NUXT_SESSION_PASSWORD env var
       maxAge: 60 * 60 * 24 * 365 // 1 year
     },
     oauth: {

@@ -247,7 +247,7 @@ onMounted(() => {
           v-if="countToday(task.key) > 0"
           :label="`${countToday(task.key)}×`"
           color="neutral"
-          variant="subtle"
+          variant="solid"
           class="absolute top-2.5 right-2.5"
         />
       </button>
